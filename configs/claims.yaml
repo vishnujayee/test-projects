@@ -1,0 +1,43 @@
+# Pre-registered claims. Written and committed BEFORE the first real benchmark run, so the
+# questions cannot be chosen after seeing the answers. Do not edit a claim after results exist;
+# add a new one with a new id and say so in docs/lab-notebook.md.
+#
+# metric: recall (vs exact float32) or ndcg (vs human labels).
+# margin: 0 means "A beats B". A margin m means "A is at most m worse than B".
+claims:
+  - id: C1
+    text: Ternary finds more of the true neighbours than binary (it costs about twice the memory).
+    a: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    b: {method: binary, mode: asymmetric_flat}
+    metric: recall
+  - id: C2
+    text: Ternary gives better answers for users than binary, by human labels.
+    a: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    b: {method: binary, mode: asymmetric_flat}
+    metric: ndcg
+  - id: C3
+    text: At about equal memory (100 vs 96 bytes), ternary beats PQ on recall.
+    a: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    b: {method: "pq(m=96)", mode: asymmetric_flat}
+    metric: recall
+  - id: C4
+    text: At about equal memory (100 vs 96 bytes), ternary beats PQ on answer quality.
+    a: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    b: {method: "pq(m=96)", mode: asymmetric_flat}
+    metric: ndcg
+  - id: C5
+    text: In fast packed search, where the query is compressed too, ternary still beats binary on recall.
+    a: {method: "ternary(alpha=0.7)", mode: symmetric_packed}
+    b: {method: binary, mode: symmetric_packed}
+    metric: recall
+  - id: C6
+    text: Ternary loses at most 0.02 nDCG against uncompressed float32.
+    a: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    b: {method: float32, mode: asymmetric_flat}
+    metric: ndcg
+    margin: 0.02
+  - id: C7
+    text: "Control: int8 beats ternary on recall. It has about 4x the memory, so if this fails the bench is broken."
+    a: {method: int8, mode: asymmetric_flat}
+    b: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    metric: recall

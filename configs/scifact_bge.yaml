@@ -1,0 +1,17 @@
+# Second embedding model: a claim that holds on two models is harder to dismiss.
+# No query instruction prefix is used, so nDCG here is not the model's best possible.
+name: scifact_bge
+dataset: scifact
+model:
+  name: BAAI/bge-small-en-v1.5
+  revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+k: 10
+seeds: [0, 1, 2]
+warmup: 20
+quantizers:
+  - {name: float32}
+  - {name: int8}
+  - {name: binary, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: pq, params: {m: 48}}
+  - {name: pq, params: {m: 96}}
+  - {name: ternary, params: {alpha: 0.7}, modes: [asymmetric_flat, symmetric_packed]}

@@ -1,0 +1,8 @@
+# sha256 of every .py in src/trivec/eval/. Do not edit without 'unfreeze eval'.
+773b0bd2a12bbdd100833e16a32693fef0d3a969d392fa230bab029dd8c24fa4  __init__.py
+45d86e0769e88b23732b47153556275978aee49261ab62566e77013f5b14281a  evaluate.py
+faaaf5dc07acdf3d4ad1d96b99fc268c13aaee7ea6ffb4d26a06686bc7f166cf  frozen.py
+e8462b4a581283533ab00b725dcd73f9315eda99e6c911f71913a881f7b9140a  latency.py
+ffc28204bcb6ef46813c13ff6143b1feb87a00fe1b9481c4346db0ecc1e3aa7e  memory.py
+7a11db6ee5f12715bb6be9f75a646ee9a8f3c5763b2824306ba327d8c971d438  metrics.py
+23992ce6ca5a2c41a521627541d450dba1c715ffb4befb4e5e6c72dcccc9a97b  provenance.py

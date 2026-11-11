@@ -1,0 +1,4 @@
+# Keep LF everywhere so Windows and Linux CI see identical files.
+* text=auto eol=lf
+*.png binary
+*.npy binary

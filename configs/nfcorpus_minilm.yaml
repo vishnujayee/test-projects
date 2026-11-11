@@ -1,0 +1,15 @@
+name: nfcorpus_minilm
+dataset: nfcorpus
+model:
+  name: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+k: 10
+seeds: [0, 1, 2]   # only PQ uses the seed; see docs/design.md on what seeds can show
+warmup: 20
+quantizers:
+  - {name: float32}
+  - {name: int8}
+  - {name: binary, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: pq, params: {m: 48}}
+  - {name: pq, params: {m: 96}}
+  - {name: ternary, params: {alpha: 0.7}, modes: [asymmetric_flat, symmetric_packed]}

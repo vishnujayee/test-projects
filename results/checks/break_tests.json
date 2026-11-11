@@ -1,0 +1,234 @@
+{
+  "provenance": {
+    "git_commit": "4e51a827ff500e7a0d7a3f1fdf94104207ccebff",
+    "git_dirty": false,
+    "packages": {
+      "numpy": "2.5.4",
+      "faiss-cpu": "1.15.1",
+      "sentence-transformers": "6.2.0",
+      "torch": "2.15.0+cpu",
+      "trivec": "0.0.1"
+    },
+    "hardware": {
+      "platform": "Windows-11-10.0.22631-SP0",
+      "cpu": "AMD Ryzen 5 5600H with Radeon Graphics",
+      "cpu_count": 12,
+      "ram_gb": 6.29,
+      "omp_num_threads": "1",
+      "openblas_num_threads": "1"
+    },
+    "python": "3.12.5",
+    "timestamp": "2026-11-01T07:13:42Z"
+  },
+  "alpha": 0.7,
+  "k": 10,
+  "datasets": {
+    "scifact": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "shuffled_labels": {
+        "real_ndcg": 0.6450816521455776,
+        "shuffled_ndcg": 0.0033333333333333335
+      },
+      "recall_without_self": {
+        "queries_also_in_corpus": 0,
+        "n_queries": 300,
+        "self_is_top1_among_those": 0.0,
+        "int8": {
+          "with_self": 0.9933333333333333,
+          "without_self": 0.9933333333333333
+        },
+        "binary": {
+          "with_self": 0.69,
+          "without_self": 0.69
+        },
+        "ternary": {
+          "with_self": 0.7800000000000001,
+          "without_self": 0.7800000000000001
+        }
+      },
+      "rotation": {
+        "float32": {
+          "original": 1.0,
+          "rotated_mean": 1.0
+        },
+        "binary": {
+          "original": 0.69,
+          "rotated_mean": 0.6892222222222223
+        },
+        "ternary": {
+          "original": 0.7800000000000001,
+          "rotated_mean": 0.7888888888888891
+        }
+      },
+      "tie_order": {
+        "binary": {
+          "forward": 0.5596666666666666,
+          "reversed": 0.5616666666666666
+        },
+        "ternary": {
+          "forward": 0.7086666666666667,
+          "reversed": 0.7086666666666667
+        }
+      },
+      "scale_variants": {
+        "least_squares_scale": {
+          "recall": 0.7800000000000001,
+          "ndcg": 0.6433299773842855
+        },
+        "no_scale": {
+          "recall": 0.78,
+          "ndcg": 0.6421590574055346
+        },
+        "unit_length": {
+          "recall": 0.7886666666666667,
+          "ndcg": 0.6414588472097704
+        }
+      },
+      "threshold_theory": {
+        "lloyd_alpha_on_this_data": 0.7731578946113586,
+        "lloyd_alpha_gaussian": 0.7670425531282435,
+        "zero_fraction_at_alpha_0.7": 0.4251815832207859,
+        "bits_of_information_per_dim": 1.558504021102939,
+        "n_levels": 3.0
+      }
+    },
+    "nfcorpus": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "shuffled_labels": {
+        "real_ndcg": 0.31599077686001786,
+        "shuffled_ndcg": 0.013490689994942694
+      },
+      "recall_without_self": {
+        "queries_also_in_corpus": 0,
+        "n_queries": 323,
+        "self_is_top1_among_those": 0.0,
+        "int8": {
+          "with_self": 0.9956656346749225,
+          "without_self": 0.9956656346749225
+        },
+        "binary": {
+          "with_self": 0.6538699690402477,
+          "without_self": 0.6538699690402477
+        },
+        "ternary": {
+          "with_self": 0.7613003095975232,
+          "without_self": 0.7613003095975232
+        }
+      },
+      "rotation": {
+        "float32": {
+          "original": 1.0,
+          "rotated_mean": 1.0
+        },
+        "binary": {
+          "original": 0.6538699690402477,
+          "rotated_mean": 0.658513931888545
+        },
+        "ternary": {
+          "original": 0.7613003095975232,
+          "rotated_mean": 0.7609907120743035
+        }
+      },
+      "tie_order": {
+        "binary": {
+          "forward": 0.5260061919504643,
+          "reversed": 0.5256965944272446
+        },
+        "ternary": {
+          "forward": 0.6842105263157895,
+          "reversed": 0.6842105263157895
+        }
+      },
+      "scale_variants": {
+        "least_squares_scale": {
+          "recall": 0.7613003095975232,
+          "ndcg": 0.30182098946974434
+        },
+        "no_scale": {
+          "recall": 0.7554179566563467,
+          "ndcg": 0.29999862454053794
+        },
+        "unit_length": {
+          "recall": 0.7665634674922601,
+          "ndcg": 0.3032512037813107
+        }
+      },
+      "threshold_theory": {
+        "lloyd_alpha_on_this_data": 0.7745789289474487,
+        "lloyd_alpha_gaussian": 0.7670425531282435,
+        "zero_fraction_at_alpha_0.7": 0.4257536528580604,
+        "bits_of_information_per_dim": 1.5581516864813982,
+        "n_levels": 3.0
+      }
+    },
+    "arguana": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "shuffled_labels": {
+        "real_ndcg": 0.5022859125446887,
+        "shuffled_ndcg": 0.001490179829641713
+      },
+      "recall_without_self": {
+        "queries_also_in_corpus": 1298,
+        "n_queries": 1406,
+        "self_is_top1_among_those": 0.9869029275808937,
+        "int8": {
+          "with_self": 0.9960170697012803,
+          "without_self": 0.9945945945945946
+        },
+        "binary": {
+          "with_self": 0.818705547652916,
+          "without_self": 0.810099573257468
+        },
+        "ternary": {
+          "with_self": 0.8682788051209105,
+          "without_self": 0.8619487908961594
+        }
+      },
+      "rotation": {
+        "float32": {
+          "original": 1.0,
+          "rotated_mean": 0.9999288762446658
+        },
+        "binary": {
+          "original": 0.818705547652916,
+          "rotated_mean": 0.8262446657183501
+        },
+        "ternary": {
+          "original": 0.8682788051209105,
+          "rotated_mean": 0.8758416311047892
+        }
+      },
+      "tie_order": {
+        "binary": {
+          "forward": 0.7567567567567568,
+          "reversed": 0.7551209103840683
+        },
+        "ternary": {
+          "forward": 0.8347795163584638,
+          "reversed": 0.8347795163584638
+        }
+      },
+      "scale_variants": {
+        "least_squares_scale": {
+          "recall": 0.8682788051209105,
+          "ndcg": 0.4884278431548904
+        },
+        "no_scale": {
+          "recall": 0.863371266002845,
+          "ndcg": 0.4848876421447662
+        },
+        "unit_length": {
+          "recall": 0.8778093883357042,
+          "ndcg": 0.4903001896400702
+        }
+      },
+      "threshold_theory": {
+        "lloyd_alpha_on_this_data": 0.7749069929122925,
+        "lloyd_alpha_gaussian": 0.7670425531282435,
+        "zero_fraction_at_alpha_0.7": 0.42604484907001766,
+        "bits_of_information_per_dim": 1.5580390495865206,
+        "n_levels": 3.0
+      }
+    }
+  }
+}

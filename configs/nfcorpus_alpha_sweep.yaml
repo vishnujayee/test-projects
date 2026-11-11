@@ -1,0 +1,14 @@
+name: nfcorpus_alpha_sweep
+dataset: nfcorpus
+model:
+  name: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+k: 10
+seeds: [0]   # ternary is deterministic, more seeds would repeat the same numbers
+warmup: 20
+quantizers:
+  - {name: ternary, params: {alpha: 0.0}, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: ternary, params: {alpha: 0.3}, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: ternary, params: {alpha: 0.5}, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: ternary, params: {alpha: 1.0}, modes: [asymmetric_flat, symmetric_packed]}
+  - {name: ternary, params: {alpha: 1.3}, modes: [asymmetric_flat, symmetric_packed]}
