@@ -7,6 +7,7 @@ from trivec.quantizers.base import Codes, FloatArray, IntArray, Quantizer
 from trivec.quantizers.binary import BinaryQuantizer
 from trivec.quantizers.float32 import Float32Quantizer
 from trivec.quantizers.int8 import Int8Quantizer
+from trivec.quantizers.rternary import RotatedTernaryQuantizer
 from trivec.quantizers.ternary import TernaryQuantizer
 
 REGISTRY: dict[str, Callable[..., Quantizer]] = {
@@ -14,6 +15,7 @@ REGISTRY: dict[str, Callable[..., Quantizer]] = {
     "int8": Int8Quantizer,
     "binary": BinaryQuantizer,
     "ternary": TernaryQuantizer,
+    "rternary": RotatedTernaryQuantizer,
 }
 
 
@@ -40,6 +42,7 @@ __all__ = [
     "Int8Quantizer",
     "IntArray",
     "Quantizer",
+    "RotatedTernaryQuantizer",
     "TernaryQuantizer",
     "make_quantizer",
 ]

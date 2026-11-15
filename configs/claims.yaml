@@ -41,3 +41,23 @@ claims:
     a: {method: int8, mode: asymmetric_flat}
     b: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
     metric: recall
+  - id: C8
+    text: "Rotation helps: rotated ternary finds more true neighbours than plain ternary at the same 100 bytes per vector."
+    a: {method: "rternary(alpha=0.7, residual=False, rotate=True)", mode: asymmetric_flat}
+    b: {method: "ternary(alpha=0.7)", mode: asymmetric_flat}
+    metric: recall
+  - id: C9
+    text: "The residual view helps: adding a ternary correction beats rotation alone on recall (it costs twice the memory)."
+    a: {method: "rternary(alpha=0.7, residual=True, rotate=True)", mode: asymmetric_flat}
+    b: {method: "rternary(alpha=0.7, residual=False, rotate=True)", mode: asymmetric_flat}
+    metric: recall
+  - id: C10
+    text: "The headline: at about equal memory (200 vs 192 bytes), rotated + residual ternary beats PQ on recall."
+    a: {method: "rternary(alpha=0.7, residual=True, rotate=True)", mode: asymmetric_flat}
+    b: {method: "pq(m=192)", mode: asymmetric_flat}
+    metric: recall
+  - id: C11
+    text: "At about equal memory, rotated + residual ternary beats PQ on answer quality."
+    a: {method: "rternary(alpha=0.7, residual=True, rotate=True)", mode: asymmetric_flat}
+    b: {method: "pq(m=192)", mode: asymmetric_flat}
+    metric: ndcg
