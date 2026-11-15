@@ -1,6 +1,6 @@
 """Multi-view ternary: rotate first, then optionally store a ternary correction.
 
-Idea (Vishnu's "current / alternative / what-if" views of one vector):
+Idea ("current / alternative / what-if" views of one vector):
   view 1  rotated   y = x @ R, where R is a random orthogonal matrix learned once in fit().
                     Rotation spreads the vector's energy evenly over all dimensions, so a
                     single threshold throws away less signal (same principle as ITQ / RaBitQ).
