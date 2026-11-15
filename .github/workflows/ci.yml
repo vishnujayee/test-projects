@@ -28,5 +28,10 @@ jobs:
       - name: Types
         run: uv run mypy src
 
+      - name: Allow unprivileged user namespaces (Lab sandbox uses `unshare -rn`)
+        # Ubuntu 24.04 runners block them via AppArmor; without this the sandboxed
+        # subprocess dies with "unshare failed: Operation not permitted".
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       - name: Tests
         run: uv run pytest -q

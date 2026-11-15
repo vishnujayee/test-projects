@@ -56,7 +56,10 @@ def _python_cmd() -> list[str]:
     # -B writes no .pyc files next to agent code.
     cmd = [sys.executable, "-I", "-B"]
     if sys.platform.startswith("linux") and shutil.which("unshare"):
-        return ["unshare", "-n", *cmd]  # true network namespace on Linux CI
+        # -n: a fresh network namespace (no interfaces but loopback, so no network).
+        # -r: map the current user to root inside a new user namespace, which is what lets a
+        # non-root user (e.g. the GitHub Actions runner) create that network namespace.
+        return ["unshare", "-rn", *cmd]  # true network namespace on Linux CI
     return cmd
 
 
