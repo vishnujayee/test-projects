@@ -358,7 +358,7 @@ Agent code never runs inside the main process. The Runner:
    current directory), a **timeout** (default 20 minutes), and
    `HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TRIVEC_SANDBOX=1`.
 3. **Block the network.** The subprocess entry point replaces `socket.socket` with
-   a function that raises. On Linux CI it additionally runs under `unshare -n`
+   a function that raises. On Linux CI it additionally runs under `unshare -rn`
    (a true no-network namespace). On Windows only the Python-level block applies;
    this is a known, documented limitation, which is why *verification* runs happen
    in CI on Linux.
@@ -422,7 +422,7 @@ anything to `verified` on its own, and the daily report uses neutral language
 | Result granularity | One JSON per quantizer per seed | Easy to append, diff, and regenerate reports from; failed runs fit naturally. | One big JSON per config (gets corrupted, hard to merge) |
 | Report generation | `trivec report` reads only `results/` | Hard rule 3. Makes "where did this number come from?" always answerable. | Hand-maintained tables |
 | LLM default | Ollama | Free, local, no key → anyone can run the lab. | Claude API default (costs money, excludes people) |
-| Sandbox | `ast` allow-list + `python -I` subprocess + timeout + socket block (+ `unshare -n` on Linux) | Layers: the cheap static check catches most, the subprocess contains the rest. | Docker only (heavy on Windows; keep as optional later) |
+| Sandbox | `ast` allow-list + `python -I` subprocess + timeout + socket block (+ `unshare -rn` on Linux) | Layers: the cheap static check catches most, the subprocess contains the rest. | Docker only (heavy on Windows; keep as optional later) |
 | Verification labels | Separate `verification.json`, changed only by `approve` | Agent cannot touch it; your manual approval is a real gate. | Field inside each result JSON (agent writes those) |
 | Metric library | Own ~30-line nDCG + test, cross-checked once with `ranx` | No fragile dependency inside the frozen module. | `pytrec_eval` (C build issues on Windows) |
 
@@ -448,7 +448,7 @@ anything to `verified` on its own, and the daily report uses neutral language
 
 - `uv`, `faiss-cpu` (wheels), `sentence-transformers` and `numpy` all install fine.
 - Set `OMP_NUM_THREADS=1` for latency runs; the evaluator records the value.
-- The strong network sandbox (`unshare -n`) is Linux-only. Local Windows runs are
+- The strong network sandbox (`unshare -rn`) is Linux-only. Local Windows runs are
   for development; **verification** runs happen in GitHub Actions on Linux.
 - Paths: always `pathlib.Path`, never string concatenation.
 
